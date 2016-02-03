@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CactusController.cs" />
+     <Compile Include="Assets\_Scripts\CowboyCollider.cs" />
      <Compile Include="Assets\_Scripts\CowboyController.cs" />
      <Compile Include="Assets\_Scripts\DesertController.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
