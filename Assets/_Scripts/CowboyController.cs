@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CowboyController : MonoBehaviour {
     //Public Instance Variables
-    public float speed = 5f;
+    public float speed = 4f;
 
     //Private Instance Variables
     private float _cowboyInput;
@@ -34,6 +34,19 @@ public class CowboyController : MonoBehaviour {
             this._currentPosition -= new Vector2(0, this.speed);
         }
 
+        this._cowboyInput = Input.GetAxis("Horizontal");
+        // if player input is positive move right
+        if (this._cowboyInput > 0)
+        {
+            this._currentPosition += new Vector2(this.speed, 0);
+        }
+
+        // if player input is negative move left 
+        if (this._cowboyInput < 0)
+        {
+            this._currentPosition -= new Vector2(this.speed, 0);
+        }
+
         this._checkBounds();
 
         this._transform.position = this._currentPosition;
@@ -44,14 +57,24 @@ public class CowboyController : MonoBehaviour {
     private void _checkBounds()
     {
         // check if the plane is going out of bounds and keep it inside window boundary
-        if (this._currentPosition.y < -110)
+        if (this._currentPosition.y < -160)
         {
-            this._currentPosition.y = -110;
+            this._currentPosition.y = -160;
         }
 
-        if (this._currentPosition.y > 110)
+        if (this._currentPosition.y > 160)
         {
-            this._currentPosition.y = 110;
+            this._currentPosition.y = 160;
+        }
+
+        if (this._currentPosition.x < -435)
+        {
+            this._currentPosition.x = -435;
+        }
+
+        if (this._currentPosition.x > 435)
+        {
+            this._currentPosition.x = 435;
         }
     }
 }

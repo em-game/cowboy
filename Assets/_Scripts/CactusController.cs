@@ -32,7 +32,7 @@ public class CactusController : MonoBehaviour {
         this._currentPosition -= new Vector2(this._verticalDrift, this._horizontalSpeed);
         this._transform.position = this._currentPosition;
 
-        if (this._currentPosition.x <= -560)
+        if (this._currentPosition.x <= -500)
         {
             this.Reset();
         }
@@ -42,7 +42,7 @@ public class CactusController : MonoBehaviour {
     {
         this._horizontalSpeed = Random.Range(this.minHorizontalSpeed, this.maxHorizontalSpeed);
         this._verticalDrift = Random.Range(this.minVerticalSpeed, this.maxVerticalSpeed);
-        float yPosition = Random.Range(-110f, 110f);
-        this._transform.position = new Vector2(560f, yPosition);
+        float yPosition = Random.Range(-160f, 160f);
+        this._transform.position = new Vector2(500f, yPosition);
     }
 }

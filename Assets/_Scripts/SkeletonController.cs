@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SkeletonController : MonoBehaviour {
     // Public Instance Variables
-    public float speed = 5f;
+    public float speed = 6f;
 
     //Private Instance Variables
     private Transform _transform;
@@ -26,7 +26,7 @@ public class SkeletonController : MonoBehaviour {
         this._currentPosition -= new Vector2(this.speed, 0);
         this._transform.position = this._currentPosition;
 
-        if (this._currentPosition.x <= -560)
+        if (this._currentPosition.x <= -530)
         {
             this.Reset();
         }
@@ -34,7 +34,7 @@ public class SkeletonController : MonoBehaviour {
 
     public void Reset()
     {
-        float yPosition = Random.Range(-110f, 110f);
-        this._transform.position = new Vector2(560f, yPosition);
+        float yPosition = Random.Range(-160f, 160f);
+        this._transform.position = new Vector2(530f, yPosition);
     }
 }
