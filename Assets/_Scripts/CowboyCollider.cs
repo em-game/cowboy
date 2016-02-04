@@ -29,11 +29,13 @@ public class CowboyCollider : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("skeleton"))
         {
-            this._skeletonSound.Play();           
+            this._skeletonSound.Play();
+            this.gameController.ScoreValue += 100;
         }
         if (other.gameObject.CompareTag("cactus"))
         {
-            this._cactusSound.Play();            
+            this._cactusSound.Play();
+            this.gameController.LivesValue -= 1;
         }
     }
 }
