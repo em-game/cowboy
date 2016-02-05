@@ -6,17 +6,22 @@ public class BulletController : MonoBehaviour
 
     //Public Instance Variables
     public float speed = 7f;
-    public CowboyController cowboy;
-
+    public CowboyController cowboyController;
+    
     //Private Instance Variables
     private float _bulletInput;
     private Transform _transform;
     private Vector2 _currentPosition;
     private bool _chekcBullet = false;
-	
+
+    private AudioSource _gunSound;
+    	
     // Use this for initialization
     void Start () {
         this._transform = gameObject.GetComponent<Transform>();
+
+        this._gunSound = gameObject.GetComponent<AudioSource>();
+        
         this.Reset();
 	}
 	
@@ -26,22 +31,22 @@ public class BulletController : MonoBehaviour
 
         if (this._chekcBullet==false)
         {
-            this.gameObject.SetActive(true);
-
+            
             if (Input.GetMouseButton(0))
             {
-                Debug.Log("mouse");
+                _gunSound.Play();
                 this._chekcBullet = true;
-                this._transform.position = new Vector2(cowboy.transform.position.x +150, cowboy.transform.position.y);            
+                this._transform.position = new Vector2(this.cowboyController.transform.position.x + 150, this.cowboyController.transform.position.y);
             }
 
             if (Input.GetKeyDown("space"))
             {
-                Debug.Log("keyboard");
+                _gunSound.Play();
                 this._chekcBullet = true;
-                this._transform.position = new Vector2(cowboy.transform.position.x + 150, cowboy.transform.position.y);
+                this._transform.position = new Vector2(this.cowboyController.transform.position.x + 150, this.cowboyController.transform.position.y);
             
             }
+            
         }
 
         this._currentPosition = this._transform.position;
@@ -55,7 +60,6 @@ public class BulletController : MonoBehaviour
             this.Reset();
         }
 	}
-
     
     public void Reset()
     {

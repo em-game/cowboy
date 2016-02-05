@@ -10,7 +10,7 @@ public class CowboyCollider : MonoBehaviour {
     public GameController gameController;
     public CactusController cactus;
     public SkeletonController skeleton;
-
+    
     // Use this for initialization
     void Start()
     {

@@ -6,12 +6,17 @@ public class GameController : MonoBehaviour {
     // PRIVATE INSTANCE VARIABLES
     private int _scoreValue;
     private int _livesValue;
-    
+
+    [SerializeField]
+    private AudioSource _gameOverSound;
+
+        
     // PUBLIC INSTANCE VARIABLES
     public int cactusNumber = 3;
     public CactusController cactus;
     public CowboyController cowboy;
     public SkeletonController skeleton;
+    public BulletController bullet;
     public Text LivesLabel;
     public Text ScoreLabel;
     public Text GameOverLabel;
@@ -53,7 +58,7 @@ public class GameController : MonoBehaviour {
             }
         }
     }
-
+    
 	// Use this for initialization
 	void Start () {
         this._initialize();
@@ -89,6 +94,17 @@ public class GameController : MonoBehaviour {
         this.HighScoreLabel.enabled = true;
         this.LivesLabel.enabled = false;
         this.ScoreLabel.enabled = false;
+        this.cowboy.gameObject.SetActive(false);
+        this.skeleton.gameObject.SetActive(false);
+        this.bullet.gameObject.SetActive(false);
+        this._gameOverSound.Play();
         this.RestartButton.gameObject.SetActive(true);
+    }
+
+    // PUBLIC METHODS
+
+    public void RestartButtonClick()
+    {
+        Application.LoadLevel("Main");
     }
 }

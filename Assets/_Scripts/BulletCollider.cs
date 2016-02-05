@@ -7,11 +7,12 @@ public class BulletCollider : MonoBehaviour
     private AudioSource[] _audioSources;
     private AudioSource _cactusSound;
     private AudioSource _skeletonSound;
-        
+           
     //Public Instance Variables
     public GameController gameController;
     public CactusController cactus;
     public SkeletonController skeleton;
+    public BulletController bulletController;
     
     // Use this for initialization
     void Start()
@@ -20,7 +21,6 @@ public class BulletCollider : MonoBehaviour
         this._audioSources = gameObject.GetComponents<AudioSource>();
         this._skeletonSound = this._audioSources[1];
         this._cactusSound = this._audioSources[2];
-
     }
 
     // Update is called once per frame
@@ -33,22 +33,20 @@ public class BulletCollider : MonoBehaviour
     {
         if (other.gameObject.CompareTag("skeleton"))
         {
-            Debug.Log("skel");
             this._skeletonSound.Play();
             this.gameController.ScoreValue += 100;
             Destroy(other.gameObject);
             Instantiate(skeleton.gameObject);
-            
-        }
+            bulletController.Reset();
 
+        }
         if (other.gameObject.CompareTag("cactus"))
         {
-            Debug.Log("cactus");
             this._cactusSound.Play();
             this.gameController.ScoreValue += 50;
             Destroy(other.gameObject);
             Instantiate(cactus.gameObject);
-                        
+            bulletController.Reset();
         }
         
     }

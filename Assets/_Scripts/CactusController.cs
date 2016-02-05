@@ -8,6 +8,7 @@ public class CactusController : MonoBehaviour {
     public float maxVerticalSpeed = 10f;
     public float minHorizontalSpeed = -2f;
     public float maxHorizontalSpeed = 2f;
+    
 
     //PRIVATE INSTANCE VARIABLES
     private Transform _transform;

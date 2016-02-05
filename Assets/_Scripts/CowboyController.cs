@@ -4,6 +4,7 @@ using System.Collections;
 public class CowboyController : MonoBehaviour {
     //Public Instance Variables
     public float speed = 4f;
+    public GameController gameController;
 
     //Private Instance Variables
     private float _cowboyInput;
@@ -50,6 +51,7 @@ public class CowboyController : MonoBehaviour {
         this._checkBounds();
 
         this._transform.position = this._currentPosition;
+        
     }
 
 
