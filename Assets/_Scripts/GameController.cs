@@ -78,6 +78,8 @@ public class GameController : MonoBehaviour {
         {
             Instantiate(cactus.gameObject);
         }
+
+        Instantiate(skeleton.gameObject);
     }
 
     private void _endGame()
