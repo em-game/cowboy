@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+Source file name : https://github.com/em-game/cowboy.git
+Author : Eunmi Han(300790610)
+Date last Modified : Feb 05, 2016
+Program Description : SideScroller shooting game 
+Revision History :1.11
+
+Last Modified by Eunmi Han
+*/
+using UnityEngine;
 using System.Collections;
 
 public class BulletController : MonoBehaviour

@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+Source file name : https://github.com/em-game/cowboy.git
+Author : Eunmi Han(300790610)
+Date last Modified : Feb 05, 2016
+Program Description : SideScroller shooting game 
+Revision History :1.11
+
+Last Modified by Eunmi Han
+*/
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -13,9 +22,9 @@ public class GameController : MonoBehaviour {
         
     // PUBLIC INSTANCE VARIABLES
     public int cactusNumber = 3;
+    public SkeletonController skeleton;
     public CactusController cactus;
     public CowboyController cowboy;
-    public SkeletonController skeleton;
     public BulletController bullet;
     public Text LivesLabel;
     public Text ScoreLabel;
@@ -34,7 +43,7 @@ public class GameController : MonoBehaviour {
         set
         {
             this._scoreValue = value;
-            this.ScoreLabel.text = "Score: " + this._scoreValue;
+            this.ScoreLabel.text = "Score:" + this._scoreValue;
         }
     }
 
@@ -54,7 +63,7 @@ public class GameController : MonoBehaviour {
             }
             else
             {
-                this.LivesLabel.text = "lives: " + this._livesValue;
+                this.LivesLabel.text = "Lves:" + this._livesValue;
             }
         }
     }
@@ -78,13 +87,16 @@ public class GameController : MonoBehaviour {
         this.GameOverLabel.enabled = false;
         this.HighScoreLabel.enabled = false;
         this.RestartButton.gameObject.SetActive(false);
-
+        this.skeleton.gameObject.SetActive(true);
+        
+        Instantiate(skeleton.gameObject);
+        
         for (int cactusCount = 0; cactusCount < this.cactusNumber; cactusCount++)
         {
             Instantiate(cactus.gameObject);
         }
 
-        Instantiate(skeleton.gameObject);
+        
     }
 
     private void _endGame()
@@ -95,7 +107,6 @@ public class GameController : MonoBehaviour {
         this.LivesLabel.enabled = false;
         this.ScoreLabel.enabled = false;
         this.cowboy.gameObject.SetActive(false);
-        this.skeleton.gameObject.SetActive(false);
         this.bullet.gameObject.SetActive(false);
         this._gameOverSound.Play();
         this.RestartButton.gameObject.SetActive(true);

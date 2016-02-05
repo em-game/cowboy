@@ -10,37 +10,41 @@ Last Modified by Eunmi Han
 using UnityEngine;
 using System.Collections;
 
-public class DesertController : MonoBehaviour {
-    //Public Instance Variables
-    public float speed = 5f;
+public class StarController : MonoBehaviour
+{
+    // PUBLIC INSTANCE VARIABLES
+    public float speed = 8f;
 
-    //Private Instance Variables
+    //PRIVATE INSTANCE VARIABLES
     private Transform _transform;
     private Vector2 _currentPosition;
 
-	// Use this for initialization
-	void Start () {
-        //Make a reference with the Transform Component
+    // Use this for initialization
+    void Start()
+    {
+        // Make a reference with the Transform Component
         this._transform = gameObject.GetComponent<Transform>();
 
-        //Reset the Island Sprite to the Top
-        this.Reset();	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        // Reset the Star Sprite to the Top
+        this.Reset();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         this._currentPosition = this._transform.position;
         this._currentPosition -= new Vector2(this.speed, 0);
         this._transform.position = this._currentPosition;
 
-        if (this._currentPosition.x <= -936)
+        if (this._currentPosition.y <= -530)
         {
             this.Reset();
         }
-	}
+    }
 
     public void Reset()
     {
-        this._transform.position = new Vector2(933f, 0);
+        float yPosition = Random.Range(-160f, 160f);
+        this._transform.position = new Vector2(530f, yPosition);
     }
 }
