@@ -14,6 +14,7 @@ public class CowboyCollider : MonoBehaviour {
     //Private Instance Variables
     private AudioSource[] _audioSources;
     private AudioSource _cowboySound;
+    private AudioSource _starSound;
     
     //Public Instance Variables
     public GameController gameController;
@@ -26,7 +27,8 @@ public class CowboyCollider : MonoBehaviour {
     {
         // Initialize the audioSources array
         this._audioSources = gameObject.GetComponents<AudioSource>();
-        this._cowboySound = this._audioSources[1];        
+        this._cowboySound = this._audioSources[1];
+        this._starSound = this._audioSources[2];
     }
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class CowboyCollider : MonoBehaviour {
 
         if (other.gameObject.CompareTag("star"))
         {
+            this._starSound.Play();
             this.star.Reset();
             this.gameController.ScoreValue += 75;
         }
